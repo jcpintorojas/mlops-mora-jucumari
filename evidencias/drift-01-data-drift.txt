@@ -1,0 +1,90 @@
+
+=== Lote 'mismo_origen' (138 filas) vs baseline (549 filas) ===
+                 variable       tipo prueba  estadistico  p_valor     umbral estado
+              monto_total   numérica     KS       0.0586    0.818 p < 0.0045  VERDE
+              pct_inicial   numérica     KS       0.0824    0.416 p < 0.0045  VERDE
+                 n_lineas   numérica     KS       0.0335    0.999 p < 0.0045  VERDE
+       n_creditos_previos   numérica     KS       0.0657    0.699 p < 0.0045  VERDE
+             monto_previo   numérica     KS       0.0730    0.570 p < 0.0045  VERDE
+        n_previos_maduros   numérica     KS       0.0390    0.993 p < 0.0045  VERDE
+         n_previos_mora30   numérica     KS       0.0264    1.000 p < 0.0045  VERDE
+   max_dias_atraso_previo   numérica     KS       0.0298    1.000 p < 0.0045  VERDE
+     saldo_abierto_previo   numérica     KS       0.0991    0.212 p < 0.0045  VERDE
+meses_desde_primera_venta   numérica     KS       0.0605    0.788 p < 0.0045  VERDE
+        n_contado_previos   numérica     KS       0.0427    0.982 p < 0.0045  VERDE
+                plazo_cat categórica    PSI       0.0586      NaN PSI >= 0.2  VERDE
+            atraso_previo categórica    PSI       0.0293      NaN PSI >= 0.2  VERDE
+                 con_plan categórica    PSI       0.0005      NaN PSI >= 0.2  VERDE
+ESTADO DEL LOTE: VERDE  · en rojo: []
+
+=== Lote 'derivado' (138 filas) vs baseline (549 filas) ===
+                 variable       tipo prueba  estadistico      p_valor     umbral estado
+              monto_total   numérica     KS       0.2535 9.790000e-07 p < 0.0045   ROJO
+              pct_inicial   numérica     KS       0.7468 1.310000e-61 p < 0.0045   ROJO
+                 n_lineas   numérica     KS       0.0335 9.990000e-01 p < 0.0045  VERDE
+       n_creditos_previos   numérica     KS       0.0657 6.990000e-01 p < 0.0045  VERDE
+             monto_previo   numérica     KS       0.0730 5.700000e-01 p < 0.0045  VERDE
+        n_previos_maduros   numérica     KS       0.0390 9.930000e-01 p < 0.0045  VERDE
+         n_previos_mora30   numérica     KS       0.0264 1.000000e+00 p < 0.0045  VERDE
+   max_dias_atraso_previo   numérica     KS       0.0298 1.000000e+00 p < 0.0045  VERDE
+     saldo_abierto_previo   numérica     KS       0.0991 2.120000e-01 p < 0.0045  VERDE
+meses_desde_primera_venta   numérica     KS       0.0605 7.880000e-01 p < 0.0045  VERDE
+        n_contado_previos   numérica     KS       0.0427 9.820000e-01 p < 0.0045  VERDE
+                plazo_cat categórica    PSI       0.8311          NaN PSI >= 0.2   ROJO
+            atraso_previo categórica    PSI       0.0293          NaN PSI >= 0.2  VERDE
+                 con_plan categórica    PSI      14.3177          NaN PSI >= 0.2   ROJO
+ESTADO DEL LOTE: ROJO  · en rojo: ['monto_total', 'pct_inicial', 'plazo_cat', 'con_plan']
+
+=== Lote '2024-S2_2025-S1' (387 filas) vs baseline (549 filas) ===
+                 variable       tipo prueba  estadistico      p_valor     umbral estado
+              monto_total   numérica     KS       0.3185 6.940000e-21 p < 0.0045   ROJO
+              pct_inicial   numérica     KS       0.1491 7.140000e-05 p < 0.0045   ROJO
+                 n_lineas   numérica     KS       0.0890 5.090000e-02 p < 0.0045  VERDE
+       n_creditos_previos   numérica     KS       0.3646 2.280000e-27 p < 0.0045   ROJO
+             monto_previo   numérica     KS       0.4322 1.260000e-38 p < 0.0045   ROJO
+        n_previos_maduros   numérica     KS       0.4477 1.560000e-41 p < 0.0045   ROJO
+         n_previos_mora30   numérica     KS       0.3770 2.850000e-29 p < 0.0045   ROJO
+   max_dias_atraso_previo   numérica     KS       0.3875 6.170000e-31 p < 0.0045   ROJO
+     saldo_abierto_previo   numérica     KS       0.2333 2.470000e-11 p < 0.0045   ROJO
+meses_desde_primera_venta   numérica     KS       0.5600 3.790000e-66 p < 0.0045   ROJO
+        n_contado_previos   numérica     KS       0.3556 5.110000e-26 p < 0.0045   ROJO
+                plazo_cat categórica    PSI       2.3392          NaN PSI >= 0.2   ROJO
+            atraso_previo categórica    PSI       0.6253          NaN PSI >= 0.2   ROJO
+                 con_plan categórica    PSI       0.0220          NaN PSI >= 0.2  VERDE
+ESTADO DEL LOTE: ROJO  · en rojo: ['monto_total', 'pct_inicial', 'n_creditos_previos', 'monto_previo', 'n_previos_maduros', 'n_previos_mora30', 'max_dias_atraso_previo', 'saldo_abierto_previo', 'meses_desde_primera_venta', 'n_contado_previos', 'plazo_cat', 'atraso_previo']
+
+=== Lote '2025-S2_2026-S1' (427 filas) vs baseline (549 filas) ===
+                 variable       tipo prueba  estadistico      p_valor     umbral estado
+              monto_total   numérica     KS       0.2233 5.640000e-11 p < 0.0045   ROJO
+              pct_inicial   numérica     KS       0.1689 1.880000e-06 p < 0.0045   ROJO
+                 n_lineas   numérica     KS       0.0528 4.960000e-01 p < 0.0045  VERDE
+       n_creditos_previos   numérica     KS       0.4765 7.000000e-50 p < 0.0045   ROJO
+             monto_previo   numérica     KS       0.5264 2.180000e-61 p < 0.0045   ROJO
+        n_previos_maduros   numérica     KS       0.5246 6.070000e-61 p < 0.0045   ROJO
+         n_previos_mora30   numérica     KS       0.3776 5.150000e-31 p < 0.0045   ROJO
+   max_dias_atraso_previo   numérica     KS       0.4965 2.500000e-54 p < 0.0045   ROJO
+     saldo_abierto_previo   numérica     KS       0.1377 1.970000e-04 p < 0.0045   ROJO
+meses_desde_primera_venta   numérica     KS       0.6313 2.220000e-90 p < 0.0045   ROJO
+        n_contado_previos   numérica     KS       0.6365 5.250000e-92 p < 0.0045   ROJO
+                plazo_cat categórica    PSI       1.7717          NaN PSI >= 0.2   ROJO
+            atraso_previo categórica    PSI       1.0966          NaN PSI >= 0.2   ROJO
+                 con_plan categórica    PSI       0.0220          NaN PSI >= 0.2  VERDE
+ESTADO DEL LOTE: ROJO  · en rojo: ['monto_total', 'pct_inicial', 'n_creditos_previos', 'monto_previo', 'n_previos_maduros', 'n_previos_mora30', 'max_dias_atraso_previo', 'saldo_abierto_previo', 'meses_desde_primera_venta', 'n_contado_previos', 'plazo_cat', 'atraso_previo']
+
+=== Lote '2026-S2' (119 filas) vs baseline (549 filas) ===
+                 variable       tipo prueba  estadistico      p_valor     umbral estado
+              monto_total   numérica     KS       0.4556 6.070000e-19 p < 0.0045   ROJO
+              pct_inicial   numérica     KS       0.2046 4.530000e-04 p < 0.0045   ROJO
+                 n_lineas   numérica     KS       0.0579 8.760000e-01 p < 0.0045  VERDE
+       n_creditos_previos   numérica     KS       0.6960 1.040000e-46 p < 0.0045   ROJO
+             monto_previo   numérica     KS       0.7361 3.970000e-53 p < 0.0045   ROJO
+        n_previos_maduros   numérica     KS       0.7417 4.670000e-54 p < 0.0045   ROJO
+         n_previos_mora30   numérica     KS       0.4296 8.140000e-17 p < 0.0045   ROJO
+   max_dias_atraso_previo   numérica     KS       0.4318 5.540000e-17 p < 0.0045   ROJO
+     saldo_abierto_previo   numérica     KS       0.1069 1.970000e-01 p < 0.0045  VERDE
+meses_desde_primera_venta   numérica     KS       0.7872 2.490000e-62 p < 0.0045   ROJO
+        n_contado_previos   numérica     KS       0.7657 2.680000e-58 p < 0.0045   ROJO
+                plazo_cat categórica    PSI       2.6006          NaN PSI >= 0.2   ROJO
+            atraso_previo categórica    PSI       2.5074          NaN PSI >= 0.2   ROJO
+                 con_plan categórica    PSI       0.7902          NaN PSI >= 0.2   ROJO
+ESTADO DEL LOTE: ROJO  · en rojo: ['monto_total', 'pct_inicial', 'n_creditos_previos', 'monto_previo', 'n_previos_maduros', 'n_previos_mora30', 'max_dias_atraso_previo', 'meses_desde_primera_venta', 'n_contado_previos', 'plazo_cat', 'atraso_previo', 'con_plan']

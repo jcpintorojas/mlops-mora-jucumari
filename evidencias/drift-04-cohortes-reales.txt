@@ -1,0 +1,5 @@
+{'semestre': '2024-S2', 'n': 249, 'mora_real': 0.45, 'prob_media': 0.559, 'auc': 0.684, 'auc_regla': 0.609, 'mora_por_historial': {'no': 0.354, 'si': 0.571, 'sin_historial': 0.345}}
+{'semestre': '2025-S1', 'n': 138, 'mora_real': 0.348, 'prob_media': 0.562, 'auc': 0.647, 'auc_regla': 0.589, 'mora_por_historial': {'no': 0.255, 'si': 0.424, 'sin_historial': 0.32}}
+{'semestre': '2025-S2', 'n': 164, 'mora_real': 0.085, 'prob_media': 0.569, 'auc': 0.518, 'auc_regla': 0.632, 'mora_por_historial': {'no': 0.062, 'si': 0.194, 'sin_historial': 0.032}}
+{'semestre': '2026-S1', 'n': 230, 'mora_real': 0.022, 'prob_media': 0.402, 'auc': None, 'auc_regla': None, 'mora_por_historial': {'no': 0.011, 'si': 0.0, 'sin_historial': 0.091}}
+{'semestre': '2026-S2', 'n': 50, 'mora_real': 0.04, 'prob_media': 0.264, 'auc': None, 'auc_regla': None, 'mora_por_historial': {'no': 0.022, 'si': 0.25}}

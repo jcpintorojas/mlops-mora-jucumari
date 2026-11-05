@@ -1,0 +1,13 @@
+lote  1  afectados   0%  AUC 0.5668  ok           seguidos 0  mora real 0.450  prob. media 0.578  data drift VERDE
+lote  2  afectados   0%  AUC 0.6352  ok           seguidos 0  mora real 0.517  prob. media 0.578  data drift VERDE
+lote  3  afectados   0%  AUC 0.6085  ok           seguidos 0  mora real 0.483  prob. media 0.589  data drift AMARILLO
+lote  4  afectados   0%  AUC 0.6065  ok           seguidos 0  mora real 0.367  prob. media 0.569  data drift VERDE
+lote  5  afectados  15%  AUC 0.6126  ok           seguidos 0  mora real 0.417  prob. media 0.582  data drift AMARILLO
+lote  6  afectados  30%  AUC 0.4361  BAJO UMBRAL  seguidos 1  mora real 0.267  prob. media 0.607  data drift VERDE
+lote  7  afectados  45%  AUC 0.5487  ok           seguidos 0  mora real 0.333  prob. media 0.546  data drift AMARILLO
+lote  8  afectados  60%  AUC 0.4056  BAJO UMBRAL  seguidos 1  mora real 0.317  prob. media 0.569  data drift VERDE
+lote  9  afectados  70%  AUC 0.3004  BAJO UMBRAL  seguidos 2  mora real 0.350  prob. media 0.575  data drift VERDE
+lote 10  afectados  80%  AUC 0.4737  BAJO UMBRAL  seguidos 3  mora real 0.317  prob. media 0.599  data drift VERDE
+lote 11  afectados  85%  AUC 0.2772  BAJO UMBRAL  seguidos 4  mora real 0.350  prob. media 0.515  data drift ROJO
+lote 12  afectados  90%  AUC 0.3920  BAJO UMBRAL  seguidos 5  mora real 0.417  prob. media 0.519  data drift VERDE
+AUC referencia 0.6373 · σ por lote 0.0697 · umbral 0.4978 · ALARMA DE REENTRENAMIENTO en el lote 10
