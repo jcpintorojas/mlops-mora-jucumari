@@ -1,6 +1,6 @@
 # MLOps de mora de créditos en Jucumari
 
-Proyecto final del módulo **ML-Ops y Puesta en Producción** (UAGRM-SOE) · **Julio Cesar Pinto Rojas** y **David Valverde Andia**
+Proyecto final del módulo **ML-Ops y Puesta en Producción** (UAGRM-SOE) · **Julio Cesar Pinto Rojas** - **David Valverde Andia**
 
 Estima, al otorgar una venta a crédito en el ERP Jucumari, la probabilidad de que siga impaga 30 días después de vencer. Python entrena, MLflow versiona y una API en **Node.js** sirve el modelo en Kubernetes.
 
