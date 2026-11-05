@@ -1,0 +1,18 @@
+# Datos de clientes: nunca en Git. Viven fuera del repo (DATOS_RUTA)
+data/
+*.csv
+# Estado de MLflow: contiene modelos y artefactos
+mlflow-data/
+mlruns/
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+# Salidas de drift (se regeneran)
+drift/salidas/
+
+# Node
+node_modules/
+# Casos de paridad: traen los parámetros del modelo
+api/tests/paridad.local.json
