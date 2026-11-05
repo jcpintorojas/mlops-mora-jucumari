@@ -1,0 +1,10 @@
+$ docker run -d --name mora-api-prueba --network kind mora-api:2.0
+$ curl /ready
+{"estado":"listo","pod":"b2cbe1b1c944","version":"1"}
+$ curl -X POST /predict
+{"probabilidad_mora":0.834,"prediccion":"riesgo_alto","razones":["monto_total","n_previos_mora30","meses_desde_primera_venta"],"modelo":{"nombre":"mora-credito","alias":"champion","version":"1","run_id":"f8411f02f6934b789549c0c85ed7e9b8"},"pod":"b2cbe1b1c944"}
+$ docker logs
+[b2cbe1b1c944] escuchando en 8000
+[b2cbe1b1c944] modelo mora-credito@champion -> versión 1 (run f8411f02f6934b789549c0c85ed7e9b8)
+$ tamaño de la imagen
+mora-api:2.0 339MB

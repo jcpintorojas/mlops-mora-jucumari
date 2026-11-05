@@ -1,0 +1,21 @@
+### 1. Tres réplicas en estado Running simultáneamente
+$ kubectl -n mora get deployment mora-api -o wide
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES         SELECTOR
+mora-api   3/3     3            3           49m   api          mora-api:2.0   app=mora-api
+
+$ kubectl -n mora get pods -l app=mora-api -o wide
+NAME                        READY   STATUS    RESTARTS   AGE   IP            NODE                  NOMINATED NODE   READINESS GATES
+mora-api-65896cf7fb-2m7qf   1/1     Running   0          14s   10.244.0.42   mlops-control-plane   <none>           <none>
+mora-api-65896cf7fb-689cf   1/1     Running   0          20s   10.244.0.41   mlops-control-plane   <none>           <none>
+mora-api-65896cf7fb-6kllx   1/1     Running   0          8s    10.244.0.43   mlops-control-plane   <none>           <none>
+
+$ kubectl -n mora get service mora-api -o wide
+NAME       TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+mora-api   NodePort   10.96.177.35   <none>        80:30092/TCP   49m   app=mora-api
+
+$ kubectl -n mora logs -l app=mora-api --prefix --tail=50 | grep 'modelo mora-credito'
+[pod/mora-api-65896cf7fb-2m7qf/api] [mora-api-65896cf7fb-2m7qf] modelo mora-credito@champion -> versión 1 (run f8411f02f6934b789549c0c85ed7e9b8)
+[pod/mora-api-65896cf7fb-689cf/api] [mora-api-65896cf7fb-689cf] modelo mora-credito@champion -> versión 1 (run f8411f02f6934b789549c0c85ed7e9b8)
+[pod/mora-api-65896cf7fb-6kllx/api] [mora-api-65896cf7fb-6kllx] modelo mora-credito@champion -> versión 1 (run f8411f02f6934b789549c0c85ed7e9b8)
+
+# Cada Pod cargó models:/mora-credito@champion desde el Model Registry de MLflow al arrancar.

@@ -1,0 +1,32 @@
+### 3. Autorreparación: se elimina un Pod y el servicio no deja de responder
+$ kubectl -n mora get pods -l app=mora-api
+NAME                        READY   STATUS    RESTARTS   AGE
+mora-api-65896cf7fb-2m7qf   1/1     Running   0          18s
+mora-api-65896cf7fb-689cf   1/1     Running   0          24s
+mora-api-65896cf7fb-6kllx   1/1     Running   0          12s
+
+$ kubectl -n mora delete pod mora-api-65896cf7fb-2m7qf --wait=false
+pod "mora-api-65896cf7fb-2m7qf" deleted from mora namespace
+
+$ sleep 3
+
+$ kubectl -n mora get pods -l app=mora-api
+NAME                        READY   STATUS    RESTARTS   AGE
+mora-api-65896cf7fb-689cf   1/1     Running   0          27s
+mora-api-65896cf7fb-6kllx   1/1     Running   0          15s
+mora-api-65896cf7fb-7pfsj   0/1     Running   0          3s
+
+$ kubectl -n mora rollout status deployment/mora-api --timeout=180s
+Waiting for deployment "mora-api" rollout to finish: 2 of 3 updated replicas are available...
+deployment "mora-api" successfully rolled out
+
+$ kubectl -n mora get pods -l app=mora-api
+NAME                        READY   STATUS    RESTARTS   AGE
+mora-api-65896cf7fb-689cf   1/1     Running   0          30s
+mora-api-65896cf7fb-6kllx   1/1     Running   0          18s
+mora-api-65896cf7fb-7pfsj   1/1     Running   0          6s
+
+$ echo 'Peticiones enviadas durante 40 s mientras se eliminaba el Pod: 186 respondidas con 200, 0 con error'
+Peticiones enviadas durante 40 s mientras se eliminaba el Pod: 186 respondidas con 200, 0 con error
+
+# Se eliminó mora-api-65896cf7fb-2m7qf; el ReplicaSet creó otro Pod y el Service siguió respondiendo con los otros dos.

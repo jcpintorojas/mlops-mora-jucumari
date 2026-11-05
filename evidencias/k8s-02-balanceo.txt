@@ -1,0 +1,25 @@
+### 2. El tráfico se distribuye entre réplicas (nombre del Pod en la respuesta)
+$ pedir | python3 -m json.tool
+{
+    "probabilidad_mora": 0.834,
+    "prediccion": "riesgo_alto",
+    "razones": [
+        "monto_total",
+        "n_previos_mora30",
+        "meses_desde_primera_venta"
+    ],
+    "modelo": {
+        "nombre": "mora-credito",
+        "alias": "champion",
+        "version": "1",
+        "run_id": "f8411f02f6934b789549c0c85ed7e9b8"
+    },
+    "pod": "mora-api-65896cf7fb-689cf"
+}
+
+$ for i in $(seq 1 30); do pedir | python3 -c 'import sys,json; print(json.load(sys.stdin)["pod"])'; done | sort | uniq -c
+     13 mora-api-65896cf7fb-2m7qf
+     10 mora-api-65896cf7fb-689cf
+      7 mora-api-65896cf7fb-6kllx
+
+# 30 peticiones sucesivas al Service (NodePort 30092) fueron atendidas por los 3 Pods.

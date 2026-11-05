@@ -1,0 +1,40 @@
+### 4. Escalado: de 3 a 5 réplicas y regreso a 3
+$ kubectl -n mora scale deployment/mora-api --replicas=5
+deployment.apps/mora-api scaled
+
+$ kubectl -n mora rollout status deployment/mora-api --timeout=240s
+Waiting for deployment "mora-api" rollout to finish: 3 of 5 updated replicas are available...
+Waiting for deployment "mora-api" rollout to finish: 4 of 5 updated replicas are available...
+deployment "mora-api" successfully rolled out
+
+$ kubectl -n mora get pods -l app=mora-api
+NAME                        READY   STATUS    RESTARTS   AGE
+mora-api-65896cf7fb-689cf   1/1     Running   0          66s
+mora-api-65896cf7fb-6kllx   1/1     Running   0          54s
+mora-api-65896cf7fb-7pfsj   1/1     Running   0          42s
+mora-api-65896cf7fb-d64hg   1/1     Running   0          5s
+mora-api-65896cf7fb-mhnlk   1/1     Running   0          5s
+
+$ until [ $(kubectl -n mora get endpointslices -l kubernetes.io/service-name=mora-api -o jsonpath='{range .items[*].endpoints[?(@.conditions.ready==true)]}x{end}' | wc -c) -eq 5 ]; do sleep 1; done; sleep 5; kubectl -n mora get endpointslices -l kubernetes.io/service-name=mora-api
+NAME             ADDRESSTYPE   PORTS   ENDPOINTS                                         AGE
+mora-api-pw226   IPv4          8000    10.244.0.41,10.244.0.43,10.244.0.44 + 2 more...   50m
+
+$ for i in $(seq 1 50); do pedir | python3 -c 'import sys,json; print(json.load(sys.stdin)["pod"])'; done | sort | uniq -c
+      5 mora-api-65896cf7fb-689cf
+     10 mora-api-65896cf7fb-6kllx
+     14 mora-api-65896cf7fb-7pfsj
+      7 mora-api-65896cf7fb-d64hg
+     14 mora-api-65896cf7fb-mhnlk
+
+$ kubectl -n mora scale deployment/mora-api --replicas=3
+deployment.apps/mora-api scaled
+
+$ until [ $(kubectl -n mora get pods -l app=mora-api --no-headers | wc -l) -eq 3 ]; do sleep 2; done; kubectl -n mora get deployment mora-api; kubectl -n mora get pods -l app=mora-api
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+mora-api   3/3     3            3           50m
+NAME                        READY   STATUS    RESTARTS   AGE
+mora-api-65896cf7fb-689cf   1/1     Running   0          74s
+mora-api-65896cf7fb-6kllx   1/1     Running   0          62s
+mora-api-65896cf7fb-7pfsj   1/1     Running   0          50s
+
+# Con 5 réplicas el tráfico se reparte entre 5 Pods; al volver a 3 se eliminan los sobrantes.
