@@ -1,0 +1,11 @@
+# Entorno de experimentación: servidor MLflow, entrenamiento y pruebas de drift.
+# Versiones fijadas (las mismas de la práctica de MLflow de la clase 5).
+mlflow==3.14.0
+numpy==2.5.1
+pandas==2.3.3
+scikit-learn==1.9.0
+scipy==1.18.0
+matplotlib==3.10.7
+xlrd==2.0.2
+skops==0.16.0
+pytest==8.3.4
