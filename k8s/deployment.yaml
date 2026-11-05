@@ -1,0 +1,90 @@
+# Deployment del servicio de inferencia: 3 réplicas del contenedor mora-api:2.0.
+# Cada Pod descarga al arrancar models:/mora-credito@champion desde el servidor MLflow (http://mlflow-mora:5000).
+# Versión de la API de Kubernetes para este tipo de recurso.
+apiVersion: apps/v1
+# Deployment: mantiene el número pedido de Pods y gestiona sus actualizaciones.
+kind: Deployment
+# Datos que identifican al recurso.
+metadata:
+  # Nombre usado en comandos como kubectl scale.
+  name: mora-api
+  namespace: mora
+  labels:
+    app: mora-api
+# Estado deseado.
+spec:
+  # Tres copias: si cae una, las otras siguen atendiendo.
+  replicas: 3
+  # Indica qué Pods administra este Deployment: los que tengan esta etiqueta.
+  selector:
+    matchLabels:
+      app: mora-api
+  # Cómo reemplazar los Pods al actualizar.
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0   # nunca baja de 3 réplicas listas durante una actualización
+      maxSurge: 1
+  # Plantilla con la que se crea cada Pod.
+  template:
+    metadata:
+      # Etiqueta del Pod: la usan el Deployment y el Service para encontrarlo.
+      labels:
+        app: mora-api
+    spec:
+      # Contenedores que corren dentro del Pod; aquí, uno.
+      containers:
+        - name: api
+          # Imagen construida con api/Dockerfile.
+          image: mora-api:2.0
+          imagePullPolicy: IfNotPresent   # la imagen se carga en kind con "kind load docker-image"
+          ports:
+            # Puerto donde escucha Node dentro del contenedor.
+            - containerPort: 8000
+          # Variables de entorno que recibe api/server.js.
+          env:
+            - name: POD_NAME              # Downward API: el nombre del Pod viaja en cada respuesta
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            # Dirección de MLflow desde dentro del clúster.
+            - name: MLFLOW_TRACKING_URI
+              value: http://mlflow-mora:5000
+            # Modelo que debe cargar.
+            - name: MLFLOW_VERSION
+              value: "3.14.0"
+            - name: MODELO_NOMBRE
+              value: mora-credito
+            # Alias que debe cargar.
+            - name: MODELO_ALIAS
+              value: champion
+          # requests: lo reservado. limits: el máximo permitido.
+          resources:                      # requests = limits -> QoS Guaranteed 
+            requests:
+              # 250m es un cuarto de núcleo de CPU.
+              cpu: 250m
+              # Node con Express necesita poco; se fija con margen.
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          # 5 s x 24 intentos = hasta 2 minutos para arrancar.
+          startupProbe:                   # da hasta 2 min para arrancar
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 5
+            failureThreshold: 24
+          # Si falla, el Pod sigue vivo pero sale del Service.
+          readinessProbe:                 # solo recibe tráfico si el modelo del registro está cargado
+            httpGet:
+              path: /ready
+              port: 8000
+            periodSeconds: 5
+          # Tras 3 fallos seguidos, Kubernetes reinicia el contenedor.
+          livenessProbe:                  # si el proceso deja de responder, Kubernetes lo reinicia
+            httpGet:
+              path: /health
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 3

@@ -1,0 +1,22 @@
+# Service: IP estable que reparte las peticiones entre los Pods con la etiqueta app=mora-api.
+# Versión de la API para los Services.
+apiVersion: v1
+# Service: dirección estable delante de Pods que cambian.
+kind: Service
+metadata:
+  # También es su nombre de DNS; nginx lo usa para llamar a la API.
+  name: mora-api
+  namespace: mora
+spec:
+  # NodePort: permite entrar desde fuera del clúster.
+  type: NodePort
+  # Envía tráfico a los Pods listos con esta etiqueta.
+  selector:
+    app: mora-api
+  ports:
+    # port: puerto del Service dentro del clúster.
+    - port: 80
+      # targetPort: puerto del contenedor.
+      targetPort: 8000
+      # nodePort: puerto para entrar desde fuera.
+      nodePort: 30092
