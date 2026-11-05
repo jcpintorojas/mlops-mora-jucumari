@@ -1,0 +1,16 @@
+Experimento 'mora-credito' (id 1)
+run                      run_id                             algoritmo             roc_auc      f1  accuracy
+rf_n-300_depth-8         aa4397ea1d3b47fa95dfe9359709dd2e   random-forest          0.6378  0.5337    0.5650
+logreg_C-1.0             f8411f02f6934b789549c0c85ed7e9b8   regresion-logistica    0.6373  0.5671    0.5516
+logreg_C-0.01            511aa11f796f438ab5ddb69ebb9bdc53   regresion-logistica    0.6336  0.5391    0.5247
+rf_n-100_depth-4         28c7e8d5258d4976a6b39da258cc9653   random-forest          0.6274  0.5425    0.5650
+gb_lr-0.05_depth-3       79eb0ea9d5ab46da9a1808a509164621   gradient-boosting      0.5980  0.5198    0.5650
+regla_historial          f747ea1e4d65445ebebc14b0dd1c7dc1   regla                  0.5930  0.5201    0.5987
+gb_lr-0.1_depth-2        0fafbc2fbad348a8aff72f9f96efafc9   gradient-boosting      0.5663  0.4892    0.5224
+Model Registry: mora-credito
+  versión 1  run_id f8411f02f6934b789549c0c85ed7e9b8  alias ['champion']  · Modelo base: regresión logística — run logreg_C-1.0 (AUC 0.6373)
+  versión 2  run_id aa4397ea1d3b47fa95dfe9359709dd2e  alias -  · Mejor ROC AUC del experimento — run rf_n-300_depth-8 (AUC 0.6378)
+  versión 3  run_id 4f0c0688810546f48fed98b37199fa3f  alias -  · Candidata tras drift real: v3_logreg_C-0.1, etiqueta atraso_venc. No es @champion.
+  versión 4  run_id 36d4a6215db649beb7dbdddece431436  alias ['candidato']  · Candidata con datos hasta 2026-11-05. No es @champion.
+  versión 5  run_id 511aa11f796f438ab5ddb69ebb9bdc53  alias -  · Segunda logística, para demostrar el rollback — run logreg_C-0.01 (AUC 0.6336)
+models:/mora-credito@champion -> versión 1

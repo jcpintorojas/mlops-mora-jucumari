@@ -1,0 +1,24 @@
+{'trimestre': '2025-07-01', 'creditos': 59, 'atrasos': 19, 'atraso_real': 0.322, 'prob_media': 0.736, 'auc_modelo': 0.238, 'auc_regla': 0.539, 'train': 799, 'ajuste': 218, 'atrasos_ajuste': 158}
+{'trimestre': '2025-10-01', 'creditos': 105, 'atrasos': 9, 'atraso_real': 0.086, 'prob_media': 0.598, 'auc_modelo': 0.691, 'auc_regla': 0.679, 'train': 915, 'ajuste': 144, 'atrasos_ajuste': 92}
+{'trimestre': '2026-01-01', 'creditos': 135, 'atrasos': 11, 'atraso_real': 0.081, 'prob_media': 0.326, 'auc_modelo': 0.36, 'auc_regla': 0.554, 'train': 1017, 'ajuste': 103, 'atrasos_ajuste': 33}
+{'trimestre': '2026-04-01', 'creditos': 95, 'atrasos': 17, 'atraso_real': 0.179, 'prob_media': 0.114, 'auc_modelo': 0.609, 'auc_regla': 0.454, 'train': 1059, 'ajuste': 211, 'atrasos_ajuste': 30}
+{'trimestre': '2026-07-01', 'creditos': 54, 'atrasos': 12, 'atraso_real': 0.222, 'prob_media': 0.059, 'auc_modelo': 0.56, 'auc_regla': 0.506, 'train': 1120, 'ajuste': 265, 'atrasos_ajuste': 36}
+{
+  "creditos": 448,
+  "atrasos": 68,
+  "atraso_real": 0.15178571428571427,
+  "prob_media": 0.36651356595564216,
+  "auc_modelo": 0.49411764705882355,
+  "auc_regla": 0.5227167182662539,
+  "dif_ic95": [
+    -0.08087706256506792,
+    0.016683664725064808
+  ],
+  "atraso_en_top25": 0.1875,
+  "captura_top25": 0.3088235294117647,
+  "version": "4",
+  "run_id": "36d4a6215db649beb7dbdddece431436",
+  "filas_base": 1313,
+  "filas_ajuste": 209,
+  "atrasos_ajuste": 49
+}
