@@ -102,4 +102,4 @@ kind es solo para la demostración. El servidor de producción (EC2 t3.small) no
 Reglas: apagado por defecto por empresa, guardia y privilegio en el endpoint, timeout corto, y la venta sigue si falla.
 
 ## Reparto de trabajo
-Trabajo individual: todos los componentes (modelo, MLflow, Docker, Kubernetes, drift, interfaz y documentación) son de Julio Cesar Pinto Rojas, con asistencia de IA para programar y documentar.
+Trabajo en grupo de Julio Cesar Pinto Rojas y David Valverde Andia, con asistencia de IA para programar y documentar.
